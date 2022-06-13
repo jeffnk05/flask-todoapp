@@ -9,13 +9,16 @@ class Todo(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(140))
     complete = db.Column(db.Boolean)
-    
+
 db.create_all()
 
 @app.route('/')
 def index():
     return 'Hello World!'
 
+@app.route("/add", methods="POST")
+def add_todo():
+    null
 
 if __name__ == '__main__':
     app.run(debug=True)
