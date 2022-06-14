@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template, request
 from sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
@@ -18,7 +18,8 @@ def index():
 
 @app.route("/add", methods="POST")
 def add_todo():
-    null
+    if request.method == "POST":
+        new_title = request.form["todo"]
 
 if __name__ == '__main__':
     app.run(debug=True)
