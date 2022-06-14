@@ -1,3 +1,4 @@
+from operator import ne
 from flask import Flask, render_template, request
 from sqlalchemy import SQLAlchemy
 
@@ -20,6 +21,10 @@ def index():
 def add_todo():
     if request.method == "POST":
         new_title = request.form["todo"]
+
+        new_todo = Todo(title=new_title, complete=False)
+        db.session.add(new_todo)
+        db.session.commit()
 
 if __name__ == '__main__':
     app.run(debug=True)
