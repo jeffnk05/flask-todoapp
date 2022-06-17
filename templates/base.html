@@ -4,29 +4,31 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
     <title>To Do App</title>
 </head>
 <body>
-    
-    <form action="{{ url_for('add') }}" method="post">
-        <div>
+    <h1>ToDo List</h1>
+    <form class="ui form" action="{{ url_for('add') }}" method="post">
+        <div class="ui input">
             <label for="title">To Do:</label><br>
-            <input type="text" name="title"><br>
-            <input type="submit" value="Add"> 
+            <input class="ui input" type="text" name="title"><br>
+            <input class="ui olive button" type="submit" value="Add"> 
         </div>
     </form>
     {% for todo in todo_list %}
-        <div>
-            {{ todo.title }}
-        </div>
+        <div class="ui fluid container">
+            <div> {{ todo.title }} </div>
         {% if todo.complete == False %}
             <span>Not completed</span>
         {% else %}
             <span>Completed</span>
         {% endif %}
 
-        <a href="{{ url_for('update' , id=todo.id) }}">Update</a>
-        <a href="{{ url_for('delete' , id=todo.id) }}">Delete</a>
+        <a class="ui button primary" href="{{ url_for('update' , id=todo.id) }}">Update</a>
+        <a class="ui red button" href="{{ url_for('delete' , id=todo.id) }}">Delete</a>
+        </div>
     {% endfor %}
 </body>
 </html>
