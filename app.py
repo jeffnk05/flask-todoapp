@@ -22,9 +22,7 @@ def index():
 
 @app.post("/add")
 def add_todo():
-    
     new_title = request.form.get("title")
-
     new_todo = Todo(title=new_title, complete=False)
     db.session.add(new_todo)
     db.session.commit()

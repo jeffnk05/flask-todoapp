@@ -8,17 +8,25 @@
 </head>
 <body>
     
-    <form action="/add" method="post">
+    <form action="{{ url_for('add') }}" method="post">
         <div>
             <label for="title">To Do:</label><br>
             <input type="text" name="title"><br>
             <input type="submit" value="Add"> 
         </div>
-      </form>
-      {% for todo in todo_list %}
-      <div>
-          {{ todo }}
-      </div>
-      {% endfor %}
+    </form>
+    {% for todo in todo_list %}
+        <div>
+            {{ todo }}
+        </div>
+        {% if todo.complete == False %}
+            <span>Not completed</span>
+        {% else %}
+            <span>Completed</span>
+        {% endif %}
+
+        <button onclick=""> Update </button>
+        <button onclick=""> Delete </button>
+    {% endfor %}
 </body>
 </html>
